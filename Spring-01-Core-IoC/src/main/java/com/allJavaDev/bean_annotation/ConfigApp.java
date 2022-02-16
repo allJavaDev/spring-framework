@@ -1,4 +1,4 @@
-package com.cydeo.bean_annotation;
+package com.allJavaDev.bean_annotation;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
