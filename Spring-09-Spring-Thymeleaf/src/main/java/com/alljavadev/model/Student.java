@@ -6,8 +6,8 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class Student {
-    private int id;
     private String firstName;
     private String lastName;
-
+    private int age;
+    private String state;
 }
