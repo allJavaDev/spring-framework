@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Register</title>
+    <title th:text="#{index.page.title}">Title </title>
 </head>
 <body>
 <h2>Welcome Students</h2>
@@ -16,13 +16,27 @@
 
 <!--Adding parameters-->
 <a th:href="@{/student/welcome(id=${students.get(0).firstName})}">Link 2</a>
-<!--Table-->
+<!--Iteration-->
 
 <h2>Students</h2>
 <ul>
     <li th:each="student: ${students}" th:text="${student.firstName}"></li>
 </ul>
+<table>
+    <tbody>
+    <tr th:each="student: ${students}">
+        <td th:text="${student.firstName}"></td>
+        <td th:text="${student.lastName}"></td>
+    </tr>
+    </tbody>
+</table>
 
+<!--Conditional Logic-->
+<div th:text="${students.get(0).age>25?'ELIGIBLE':'NOT ELEIGIBLE'}"></div>
+<div>
+    <span th:if="${students.get(0).getState()=='Arizona'}">Arizona</span>
+    <span th:unless="${students.get(0).getState()=='Arizona'}">Not Arizona</span>
+</div>
 
 </body>
 </html>
