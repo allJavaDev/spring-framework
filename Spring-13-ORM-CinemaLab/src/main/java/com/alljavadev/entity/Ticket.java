@@ -3,18 +3,23 @@ package com.alljavadev.entity;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
-@Table (name="ticket")
 @Data
 @NoArgsConstructor
 public class Ticket extends BaseEntity{
 
-    @Column(name="movie_cinema_id")
-    private Long movieCinemaId;
+    private Integer seatNumber;
+    private Integer rowNumber;
+    @Column(columnDefinition = "timestamp")
+    private LocalDateTime dateTime;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private MovieCinema movieCinema;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private UserAccount userAccount;
 
 
 

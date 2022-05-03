@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Data
@@ -25,6 +26,11 @@ public class Movie extends BaseEntity{
     @Enumerated(EnumType.STRING)
     private MovieType type;
 
-
+//We don't need constructor, since we are using data.sql
+    @JoinTable(name="movie_genre_rel",
+    joinColumns=@JoinColumn(name="movie_id"),
+    inverseJoinColumns = @JoinColumn(name="genre_id"))
+    @ManyToMany
+    private List<Genre> genreList; //Set is better in performance - just runs one query at the background
 
 }

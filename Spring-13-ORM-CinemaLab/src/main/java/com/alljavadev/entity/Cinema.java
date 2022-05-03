@@ -2,13 +2,20 @@ package com.alljavadev.entity;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToOne;
+
 
 @Entity
-@Table(name="cinema")
 @Data
 @NoArgsConstructor
 public class Cinema extends BaseEntity {
+    private String name;
+    private String sponsoredName;
+
+    @ManyToOne (fetch = FetchType.LAZY)
+    private Location location;
+
+
 }
