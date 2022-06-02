@@ -97,6 +97,7 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long> {
     //--------Native Query, positional--------
     @Query(value = "SELECT * FROM employees WHERE salary ?1",nativeQuery = true)
     List<Employee> readEmployeeDetailBySalary(int salary);
+
     //--------Named parameter--------
     @Query("select e from Employee e where e.salary = :salary")
     List<Employee> getEmployeeSalary(@Param("salary") int salary);
